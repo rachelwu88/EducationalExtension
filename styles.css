@@ -37,8 +37,6 @@ border-radius: 39px;
 /* Briefly */
 .briefly{
     position: absolute;
-    transform: translateX(-50%)
-
     width: 258px;
     height: 72px;
     left: 82px;
