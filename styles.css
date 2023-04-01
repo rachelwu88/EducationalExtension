@@ -53,10 +53,10 @@ border-radius: 39px;
 
  /* Create an account to save your progress! */
 .create-new-account{
-position: flex;
+position: absolute;
 width: 210px;
 height: 34px;
-left: 82px;
+left: 150px;
 top: 247px;
 
 font-family: 'Inconsolata', monospace;
