@@ -1,14 +1,13 @@
-//
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
       id: 'brieflySummarize',
-      title: 'Briefly: Summarize',
+      title: 'Summarize',
       contexts: ['selection']
     });
   
     chrome.contextMenus.create({
       id: 'brieflyMakeQuiz',
-      title: 'Briefly: Make Quiz',
+      title: 'Make Quiz',
       contexts: ['selection']
     });
   });
