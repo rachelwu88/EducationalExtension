@@ -99,6 +99,7 @@ color: #000000;
 
 /*Already have an account? Sign in*/
 .log-in{
+position: absolute;
 width: 175px;
 height: 26px;
 left: 106px;
