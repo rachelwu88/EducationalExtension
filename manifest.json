@@ -13,7 +13,7 @@
       "default_popup": "popup.html"
     },
     "permissions": [
-      "contextMenus", "tabs", "<all_urls>", "scripting",
+      "contextMenus", "tabs", "scripting",
       "activeTab",
       "contextMenus"
     ],
