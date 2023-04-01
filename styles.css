@@ -1,3 +1,18 @@
+/*pop-up*/
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    border: 2px solid black;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
 
 /* Rectangle 1 */
 .rectangle1{
