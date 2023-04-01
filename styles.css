@@ -36,7 +36,10 @@ border-radius: 39px;
 
 /* Briefly */
 .briefly{
-    position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 258px;
     height: 72px;
     left: 82px;
