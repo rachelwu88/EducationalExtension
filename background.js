@@ -37,23 +37,29 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 async function summarizeText(text) {
-  const response = await fetch('https://api.openai.com//v1/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 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'
-    },
-    body: JSON.stringify({
-      prompt: `Summarize this text in one paragraph "${text}"`,
-      model: 'text-davinci-002',
-      max_tokens: 1500
-    }),
-  });
+  try {
+    const response = await fetch('https://api.openai.com//v1/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer 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'
+      },
+      body: JSON.stringify({
+        prompt: `Summarize this text in one paragraph "${text}"`,
+        model: 'text-davinci-002',
+        max_tokens: 1500
+      }),
+    });
 
-  const data = await response.json();
-  const summary = data.choices[0].text.trim();
-  return summary;
+    const data = await response.json();
+    const summary = data.choices[0].text.trim();
+    return summary;
+  } catch (error) {
+    console.error('Error summarizing text:', error);
+    return 'Error summarizing text';
+  }
 }
+
 
 async function makeQuiz(text) {
   const response = await fetch('https://api.openai.com/v1/completions', {
