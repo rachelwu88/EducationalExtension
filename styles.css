@@ -1,5 +1,8 @@
 /*pop-up*/
 .popup{
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 display: flex;
 justify-content: center;
 align-items: center;
@@ -10,7 +13,7 @@ left: 0px;
 top: 88px;
 
 background: #FFFFFF;
-border-radius: 39px;
+border-radius: 50%;
 }
 
 /* Sign-in/Log-in */
