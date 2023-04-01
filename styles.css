@@ -72,16 +72,22 @@ color: #000000;
 /* sign-up button */
 
 .sign-up-button{
-position: flex;
-width: 111px;
-height: 36px;
-left: 135px;
-top: 302px;
+    position: flex;
+    left: 5.41%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #2D4EFF;
+    border-radius: 39px;
+    border: 0;
+
+    width: 105px;
+    height: 36px;
 }
 
 /*Already have an account? Sign in*/
 .log-in{
-position: flex;
 width: 175px;
 height: 26px;
 left: 106px;
