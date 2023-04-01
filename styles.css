@@ -36,7 +36,14 @@ background: #FFFFFF;
 border-radius: 39px;
 }
 */
-
+@font-face {
+    font-family: PressStart2P;
+    src: url(press-start-2p);
+  }
+  
+  div {
+    font-family: PressStart2P;
+  }
 /* Briefly */
 .briefly{
     position: absolute;
