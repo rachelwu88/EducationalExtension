@@ -1,6 +1,6 @@
 /*pop-up*/
 .popup{
-    position: flex;
+position: flex;
 width: 380px;
 height: 379px;
 left: 0px;
@@ -10,8 +10,15 @@ background: #FFFFFF;
 border-radius: 39px;
 }
 
+/* Sign-in/Log-in */
 
-/* Rectangle 1 */
+.sinlin{
+position: relative;
+width: 380px;
+height: 567px;
+}
+
+/* Rectangle 1
 .rectangle1{
 position: flex;
 width: 380px;
@@ -22,6 +29,7 @@ top: 88px;
 background: #FFFFFF;
 border-radius: 39px;
 }
+*/
 
 /* Briefly */
 .briefly{
