@@ -86,6 +86,14 @@ color: #000000;
 
     width: 105px;
     height: 36px;
+
+    font-family: 'Inconsolata', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18.88px;
+    text-align: center;
+    color: white   
 }
 
 /*Already have an account? Sign in*/
@@ -95,7 +103,7 @@ height: 26px;
 left: 106px;
 top: 359px;
 
-font-family: 'Inconsolata';
+font-family: 'Inconsolata', monospace;
 font-style: normal;
 font-weight: 400;
 font-size: 13px;
