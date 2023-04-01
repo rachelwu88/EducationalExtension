@@ -1,6 +1,6 @@
 /*pop-up*/
 .popup{
-    position: fixed;
+    position: flex;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -16,7 +16,7 @@
 
 /* Rectangle 1 */
 .rectangle1{
-position: absolute;
+position: flex;
 width: 380px;
 height: 379px;
 left: 0px;
@@ -28,7 +28,7 @@ border-radius: 39px;
 
 /* Briefly */
 .briefly{
-    position: absolute;
+    position: flex;
     width: 258px;
     height: 72px;
     left: 82px;
@@ -45,7 +45,7 @@ border-radius: 39px;
 
  /* Create an account to save your progress! */
 .create-new-account{
-position: absolute;
+position: flex;
 width: 210px;
 height: 34px;
 left: 82px;
@@ -64,7 +64,7 @@ color: #000000;
 /* sign-up button */
 
 .sign-up-button{
-position: absolute;
+position: flex;
 width: 111px;
 height: 36px;
 left: 135px;
@@ -73,7 +73,7 @@ top: 302px;
 
 /*Already have an account? Sign in*/
 .log-in{
-position: absolute;
+position: flex;
 width: 175px;
 height: 26px;
 left: 106px;
