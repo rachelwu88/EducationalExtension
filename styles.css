@@ -78,7 +78,8 @@ color: #000000;
     position: flex;
     left: 5.41%;
     right: 0%;
-    top: 100%;
+    top: 0%;
+    top: 100;
     bottom: 0%;
 
     background: #2D4EFF;
