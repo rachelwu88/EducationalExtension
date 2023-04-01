@@ -11,4 +11,22 @@ background: #FFFFFF;
 border-radius: 39px;
 }
 
+/* Briefly */
+.briefly{
+    position: absolute;
+    width: 258px;
+    height: 72px;
+    left: 82px;
+    top: 183px;
+    
+    font-family: 'Press Start 2P';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    
+    color: #2D4EFF;
+}
+
+
 
