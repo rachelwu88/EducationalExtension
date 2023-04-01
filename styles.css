@@ -39,11 +39,7 @@ border-radius: 39px;
 @font-face {
     font-family: PressStart2P;
     src: url(press-start-2p);
-  }
-  
-  div {
-    font-family: PressStart2P;
-  }
+}
 /* Briefly */
 .briefly{
     position: absolute;
@@ -52,7 +48,7 @@ border-radius: 39px;
     height: 72px;
     top: 100px;
     
-    font-family: 'Press Start 2P';
+    font-family: PressStart2P;
     font-style: normal;
     font-weight: 400;
     font-size: 70px;
