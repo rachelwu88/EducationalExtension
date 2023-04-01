@@ -75,10 +75,10 @@ color: #000000;
 /* sign-up button */
 
 .sign-up-button{
-    position: flex;
+    position: absolute;
     left: 5.41%;
     right: 0%;
-    top: 100;
+    top: 100px;
     bottom: 0%;
 
     background: #2D4EFF;
