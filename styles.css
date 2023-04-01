@@ -40,17 +40,15 @@ border-radius: 39px;
 /* Briefly */
 .briefly{
     position: absolute;
-    transform: translateX(-50%)
-
+    left: 70px;
     width: 258px;
     height: 72px;
-    left: 82px;
-    top: 183px;
+    top: 100px;
     
     font-family: 'Press Start 2P';
     font-style: normal;
     font-weight: 400;
-    font-size: 36px;
+    font-size: 70px;
     line-height: 36px;
     
     color: #2D4EFF;
@@ -58,10 +56,10 @@ border-radius: 39px;
 
  /* Create an account to save your progress! */
 .create-new-account{
-position: flex;
+position: absolute;
 width: 210px;
 height: 34px;
-left: 82px;
+left: 150px;
 top: 247px;
 
 font-family: 'Inconsolata', monospace;
