@@ -23,3 +23,31 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     }, 1000); // add a delay of 1 second (1000 ms)
   }
 });
+
+let currentQuiz = null;
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === 'openQuizPopup') {
+    currentQuiz = request.quiz;
+    openQuizPopup();
+  }
+});
+
+function openQuizPopup() {
+  chrome.windows.create({
+    url: chrome.runtime.getURL('quiz_popup.html'),
+    type: 'popup',
+    width: 320,
+    height: 200,
+  });
+}
+
+chrome.runtime.onConnect.addListener(port => {
+  if (port.name === 'quizPopup' && currentQuiz) {
+    port.postMessage({
+      action: 'displayQuiz',
+      quiz: currentQuiz,
+    });
+    currentQuiz = null;
+  }
+});

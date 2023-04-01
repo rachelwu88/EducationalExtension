@@ -1,30 +1,35 @@
 {
-    "manifest_version": 3,
-    "name": "Briefly",
-    "version": "1.0",
-    "description": "A Chrome extension that summarizes text and generates quizzes using ChatGPT API",
-    "icons": {
+  "manifest_version": 3,
+  "name": "Briefly",
+  "version": "1.0",
+  "description": "A Chrome extension that summarizes text and generates quizzes using ChatGPT API",
+  "icons": {
+    "48": "icon_48.jpeg"
+  },
+  "action": {
+    "default_icon": {
       "48": "icon_48.jpeg"
     },
-    "action": {
-      "default_icon": {
-        "48": "icon_48.jpeg"
-      },
-      "default_popup": "popup.html"
-    },
-    "permissions": [
-      "contextMenus", "tabs", "scripting",
-      "activeTab",
-      "contextMenus"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
-    ]
-  }
-  
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "contextMenus", "tabs", "scripting",
+    "activeTab",
+    "contextMenus"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["quiz_popup.html", "quiz_popup.css", "quiz_popup.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

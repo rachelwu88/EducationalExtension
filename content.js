@@ -9,8 +9,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
   } else if (request.action === 'brieflyMakeQuiz') {
     makeQuiz(request.selection).then(quiz => {
-      console.log(quiz)
-      alert('Quiz: ' + JSON.stringify(quiz));
+      console.log(quiz);
+      // Parse the question and answer from the quiz text.
+      const [question, answer] = quiz.split('\n');
+      chrome.runtime.sendMessage({
+        action: 'openQuizPopup',
+        quiz: { question, answer },
+      });
     });
   }
 });
@@ -55,6 +60,21 @@ async function makeQuiz(text) {
       // stop: null,
       // temperature: 0.7
     })
+  });
+
+  function openQuizPopup() {
+    chrome.windows.create({
+      url: 'quiz_popup.html',
+      type: 'popup',
+      width: 320,
+      height: 200,
+    });
+  }
+
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'displayQuiz') {
+      openQuizPopup();
+    }
   });
 
   const data = await response.json();
