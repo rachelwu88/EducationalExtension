@@ -1,40 +1,62 @@
+console.log("Content script loaded");
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'summarize') {
-      summarizeText(request.selection).then(summary => {
-        alert('Summary: ' + summary);
-      });
-    } else if (request.action === 'makeQuiz') {
-      makeQuiz(request.selection).then(quiz => {
-        alert('Quiz: ' + JSON.stringify(quiz));
-      });
-    }
-  });
-  
-  async function summarizeText(text) {
-    const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_API_KEY'
-      },
-      body: JSON.stringify({
-        prompt: `Summarize the following text: "${text}"`,
-        max_tokens: 50,
-        n: 1,
-        stop: null,
-        temperature: 0.7
-      })
+  console.log("Message received:", request);
+  if (request.action === 'brieflySummarize') {
+    summarizeText(request.selection).then(summary => {
+      alert('Summary: ' + summary);
     });
-  
-    const data = await response.json();
-    const summary = data.choices[0].text.trim();
-    return summary;
+  } else if (request.action === 'brieflyMakeQuiz') {
+    makeQuiz(request.selection).then(quiz => {
+      console.log(quiz)
+      alert('Quiz: ' + JSON.stringify(quiz));
+    });
   }
-  
-  
-  
-  async function makeQuiz(text) {
-    // Call ChatGPT API for generating quiz
-    // Return the quiz
-  }
-  
+});
+
+async function summarizeText(text) {
+  const response = await fetch('https://api.openai.com//v1/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer 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'
+    },
+    body: JSON.stringify({
+      prompt: `Summarize this text in one paragraph "${text}"`,
+      model: 'text-davinci-002',
+      max_tokens: 1500
+      // n: 1,
+      // stop: null,
+      // temperature: 0.7
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data)
+  const summary = data.choices[0].text.trim();
+  console.log(summary)
+  return summary;
+}
+
+
+async function makeQuiz(text) {
+  const response = await fetch('https://api.openai.com/v1/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer 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'
+    },
+    body: JSON.stringify({
+      prompt: `Create a quiz question and answer based on the following text: "${text}"`,
+      model: 'text-davinci-002'
+      // max_tokens: 300,
+      // n: 1,
+      // stop: null,
+      // temperature: 0.7
+    })
+  });
+
+  const data = await response.json();
+  const quiz = data.choices[0].text.trim();
+  return quiz;
+}

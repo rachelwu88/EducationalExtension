@@ -14,10 +14,13 @@ chrome.runtime.onInstalled.addListener(() => {
   
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === 'brieflySummarize' || info.menuItemId === 'brieflyMakeQuiz') {
-      chrome.tabs.sendMessage(tab.id, {
-        action: info.menuItemId,
-        selection: info.selectionText
-      });
+      setTimeout(() => { // add a delay
+        chrome.tabs.sendMessage(tab.id, {
+          action: info.menuItemId,
+          selection: info.selectionText
+        });
+        console.log("Message sent to content script:", info.selectionText);
+      }, 1000); // add a delay of 1 second (1000 ms)
     }
   });
   
