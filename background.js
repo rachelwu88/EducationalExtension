@@ -15,7 +15,10 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === 'brieflySummarize' || info.menuItemId === 'brieflyMakeQuiz') {
     // Inject the content script into the current tab
-    chrome.tabs.executeScript(tab.id, { file: 'content.js' }, () => {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ['content.js']
+    }).then(() => {
       // Wait for a short delay before sending a message to the content script
       setTimeout(() => {
         chrome.tabs.sendMessage(tab.id, {
@@ -27,5 +30,6 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     });
   }
 });
+
 
   
