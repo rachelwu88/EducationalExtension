@@ -28,5 +28,51 @@ border-radius: 39px;
     color: #2D4EFF;
 }
 
+ /* Create an account to save your progress! */
+.create-new-account{
+position: absolute;
+width: 210px;
+height: 34px;
+left: 82px;
+top: 247px;
+
+font-family: 'Inconsolata';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 17px;
+text-align: center;
+
+color: #000000;
+}
+
+/* sign-up button */
+
+.sign-up-button{
+position: absolute;
+width: 111px;
+height: 36px;
+left: 135px;
+top: 302px;
+}
+
+/*Already have an account? Sign in*/
+.log-in{
+position: absolute;
+width: 175px;
+height: 26px;
+left: 106px;
+top: 359px;
+
+font-family: 'Inconsolata';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 14px;
+text-align: center;
+
+color: #000000;
+}
+
 
 
