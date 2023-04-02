@@ -3,17 +3,17 @@
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-display: flex;
+display: absolute;
+border-radius: 200px;
 justify-content: center;
 align-items: center;
 flex-direction: column;
-width: 380px;
-height: 379px;
+width: 300px;
+height: 400px;
 left: 0px;
 top: 88px;
 
 background: #FFFFFF;
-border-radius: 10px;
 }
 
 /* Sign-in/Log-in */
@@ -45,7 +45,7 @@ border-radius: 39px;
     position: absolute;
     left: 52px;
     width: 200px;
-    height: 140px;
+    height: 160px;
     top: 100px;
     
     font-family: PressStart2P;

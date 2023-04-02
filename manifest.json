@@ -12,9 +12,18 @@
       },
       "default_popup": "popup.html"
     },
+    "web_accessible_resources": [
+      {
+        "resources": ["quiz.html"],
+        "matches": ["<all_urls>"],
+        "use_dynamic_url": false
+      }
+    ],
     "permissions": [
       "activeTab",
-      "contextMenus"
+      "contextMenus",
+      "tabs",
+      "storage"
     ],
     "background": {
       "service_worker": "background.js"
