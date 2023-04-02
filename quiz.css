@@ -1,3 +1,8 @@
+@font-face {
+    font-family: PressStart2P;
+    src: url(pressstart2p1-webfont.woff);
+}
+
 .quiz_layout{
     position: flex;
     width: 210px;
@@ -43,3 +48,15 @@
     justify-content: center;
     align-items: center;
   }
+
+.quiz-title{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    
+    font-family: PressStart2P;
+    font-style: normal;
+    font-weight: 400;
+    
+    color: #2D4EFF;
+}
