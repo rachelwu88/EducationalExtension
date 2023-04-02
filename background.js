@@ -20,3 +20,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     });
   }
 });
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "openQuizTab") {
+    chrome.tabs.create({ url: chrome.runtime.getURL("quiz.html") });
+  }
+});

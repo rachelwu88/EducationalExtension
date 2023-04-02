@@ -5,9 +5,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       alert('Summary: ' + summary);
     });
   } else if (request.action === 'brieflyMakeQuiz') {
-    makeQuiz(request.selection).then(quiz => {
-      alert('Quiz: ' + JSON.stringify(quiz));
-    });
+    makeQuiz(request.selection);
   }
 });
 
@@ -63,7 +61,7 @@ async function makeQuiz(text) {
   const rawQuiz = data.choices[0].text.trim();
   console.log(rawQuiz)
   const quiz = parseQuiz(rawQuiz);
-  displayQuiz(quiz);
+  saveQuizDataAndOpenTab(quiz); 
 }
 
 function parseQuiz(rawQuiz) {
@@ -85,32 +83,24 @@ function parseQuiz(rawQuiz) {
   return quiz;
 }
 
-function displayQuiz(quiz) {
-  const quizWindow = window.open('', 'QuizWindow', 'width=800,height=600');
-  quizWindow.document.write('<html><head><title>Quiz</title></head><body>');
+// function saveQuizDataAndOpenTab(quiz) {
+//   console.log("Saving quiz data to localStorage:", quiz);
+//   localStorage.setItem('quizData', JSON.stringify(quiz));
+//   chrome.runtime.sendMessage({ action: "openQuizTab" });
+// }
 
-  for (let i = 0; i < quiz.questions.length; i++) {
-    quizWindow.document.write(`<p>${quiz.questions[i]}</p>`);
-
-    for (let j = 0; j < 4; j++) {
-      quizWindow.document.write(`<input type="radio" id="choice${i}${j}" name="question${i}" value="${j}">`);
-      quizWindow.document.write(`<label for="choice${i}${j}">${quiz.choices[i][j]}</label><br>`);
-    }
-  }
-
-  quizWindow.document.write('<button onclick="checkAnswers()">Submit</button>');
-  quizWindow.document.write('<p id="result"></p>');
-  quizWindow.document.write('</body></html>');
-
-  quizWindow.checkAnswers = function() {
-    let correctAnswers = 0;
-    for (let i = 0; i < quiz.questions.length; i++) {
-      const userAnswer = quizWindow.document.querySelector(`input[name="question${i}"]:checked`);
-      if (userAnswer && userAnswer.value === quiz.answers[i]) {
-        correctAnswers++;
-      }
-    }
-
-    quizWindow.document.getElementById('result').innerHTML = `You got ${correctAnswers} out of ${quiz.questions.length} correct.`;
-  };
+function saveQuizDataAndOpenTab(quiz) {
+  console.log("Saving quiz data to chrome.storage.local:", quiz);
+  chrome.storage.local.set({ quizData: JSON.stringify(quiz) }, () => {
+    chrome.runtime.sendMessage({ action: "openQuizTab" });
+  });
 }
+
+
+
+// function displayQuiz(quiz) {
+//   localStorage.setItem('quizData', JSON.stringify(quiz));
+//   chrome.runtime.sendMessage({ action: "openQuizTab" });
+// }
+
+
