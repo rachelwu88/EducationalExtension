@@ -81,3 +81,4 @@ async function makeQuiz(text) {
   const quiz = data.choices[0].text.trim();
   return quiz;
 }
+  
