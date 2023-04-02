@@ -14,7 +14,7 @@ function displayQuiz() {
   for (let i = 0; i < quiz.questions.length; i++) {
     const questionElement = document.createElement('p');
     questionElement.textContent = quiz.questions[i];
-    questionElement.classList.add('question'); // Add the 'question' class
+    questionElement.classList.add('question'); 
     quizContainer.appendChild(questionElement);
 
     for (let j = 0; j < 4; j++) {
@@ -23,7 +23,7 @@ function displayQuiz() {
       choiceElement.id = `choice${i}${j}`;
       choiceElement.name = `question${i}`;
       choiceElement.value = j;
-      choiceElement.classList.add('choice'); // Add the 'choice' class
+      choiceElement.classList.add('choice'); 
       quizContainer.appendChild(choiceElement);
 
       const labelElement = document.createElement('label');

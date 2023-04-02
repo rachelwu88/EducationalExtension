@@ -23,3 +23,23 @@
 .choice {
     margin-left: 1rem;
 }
+
+.submit-button{
+    margin-top: 20px;
+
+    background: #2D4EFF;
+    border-radius: 39px;
+    border: 0;
+
+    width: 120px;
+    height: 36px;  
+
+    font-size: medium;
+    color: white;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
