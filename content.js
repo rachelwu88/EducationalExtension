@@ -86,31 +86,18 @@ function parseQuiz(rawQuiz) {
 }
 
 function displayQuiz(quiz) {
-  const quizWindow = window.open('', 'QuizWindow', 'width=800,height=600');
-  quizWindow.document.write('<html><head><title>Quiz</title></head><body>');
-
-  for (let i = 0; i < quiz.questions.length; i++) {
-    quizWindow.document.write(`<p>${quiz.questions[i]}</p>`);
-
-    for (let j = 0; j < 4; j++) {
-      quizWindow.document.write(`<input type="radio" id="choice${i}${j}" name="question${i}" value="${j}">`);
-      quizWindow.document.write(`<label for="choice${i}${j}">${quiz.choices[i][j]}</label><br>`);
+  chrome.runtime.sendMessage({ action: "showQuiz" }, (response) => {
+    if (chrome.runtime.lastError) {
+      console.error(chrome.runtime.lastError);
+    } else {
+      const quizWindow = window.open(response.quizUrl, "QuizWindow", "width=800,height=600");
+      quizWindow.onload = () => {
+        const iframe = quizWindow.document.getElementById("quiz-iframe");
+        iframe.contentWindow.postMessage({ action: "loadQuiz", quiz }, "*");
+      };
     }
-  }
-
-  quizWindow.document.write('<button onclick="checkAnswers()">Submit</button>');
-  quizWindow.document.write('<p id="result"></p>');
-  quizWindow.document.write('</body></html>');
-
-  quizWindow.checkAnswers = function() {
-    let correctAnswers = 0;
-    for (let i = 0; i < quiz.questions.length; i++) {
-      const userAnswer = quizWindow.document.querySelector(`input[name="question${i}"]:checked`);
-      if (userAnswer && userAnswer.value === quiz.answers[i]) {
-        correctAnswers++;
-      }
-    }
-
-    quizWindow.document.getElementById('result').innerHTML = `You got ${correctAnswers} out of ${quiz.questions.length} correct.`;
-  };
+  });
 }
+
+
+
