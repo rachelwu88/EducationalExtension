@@ -34,16 +34,15 @@ function displayQuiz() {
   const submitButton = document.getElementById('submit');
   submitButton.addEventListener('click', checkAnswers);
 })
-localStorage.clear();
 }
 
 function checkAnswers() {
   let correctAnswers = 0;
   for (let i = 0; i < quiz.questions.length; i++) {
-    const userAnswer = parseInt(document.querySelector(`input[name="question${i}"]:checked`).value);
-    console.log(userAnswer);
-    console.log(quiz.answers[i]);
-    if (userAnswer == quiz.answers[i]) {
+    const userAnswer = (document.querySelector(`input[name="question${i}"]:checked`));
+    if (parseInt(userAnswer.value) == quiz.answers[i]) {
+      const labelElement = document.querySelector(`label[for="choice${i}${userAnswer.value}"]`);
+      labelElement.style.color = 'green';
       correctAnswers++;
     }
   }
@@ -52,3 +51,4 @@ function checkAnswers() {
 }
 
 displayQuiz();
+localStorage.clear();
