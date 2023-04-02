@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       const [question, answer] = quiz.split('\n');
       chrome.runtime.sendMessage({
         action: 'openQuizPopup',
-        quiz: { question, answer },
+        quiz: `${question}\n${answer}`, // Send the quiz as a string
       });
     });
   }

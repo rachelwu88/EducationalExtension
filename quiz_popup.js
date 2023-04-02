@@ -7,8 +7,8 @@ const port = chrome.runtime.connect({ name: 'quizPopup' });
 
 port.onMessage.addListener(request => {
   if (request.action === 'displayQuiz') {
-    const { question, answer } = request.quiz;
-    questionElement.innerText = question;
+    const [question, answer] = request.quiz.split('\n');
+    questionElement.innerText = `Question: ${question.trim()}`;
 
     submitAnswerButton.onclick = () => {
       const userAnswer = userAnswerElement.value.trim().toLowerCase();
