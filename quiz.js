@@ -1,11 +1,8 @@
-console.log("quiz.js loaded");
-console.log(localStorage.getItem('quizData'));
-
-const quiz = JSON.parse(localStorage.getItem('quizData'));
+let quiz= {}
 
 function displayQuiz() {
     chrome.storage.local.get("quizData", (data) => {
-        const quiz = JSON.parse(data.quizData);
+        quiz = JSON.parse(data.quizData);
     
     if (!quiz) {
         console.error("Quiz data not found in chrome.storage.local");
@@ -37,14 +34,19 @@ function displayQuiz() {
       quizContainer.appendChild(document.createElement('br'));
     }
   }
+  const submitButton = document.getElementById('submit');
+  submitButton.addEventListener('click', checkAnswers);
 })
+localStorage.clear();
 }
 
 function checkAnswers() {
   let correctAnswers = 0;
   for (let i = 0; i < quiz.questions.length; i++) {
-    const userAnswer = document.querySelector(`input[name="question${i}"]:checked`);
-    if (userAnswer && userAnswer.value === quiz.answers[i]) {
+    const userAnswer = parseInt(document.querySelector(`input[name="question${i}"]:checked`).value);
+    console.log(userAnswer);
+    console.log(quiz.answers[i]);
+    if (userAnswer == quiz.answers[i]) {
       correctAnswers++;
     }
   }
